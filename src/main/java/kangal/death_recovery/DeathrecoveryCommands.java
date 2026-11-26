@@ -55,6 +55,10 @@ public class DeathrecoveryCommands {
             return Command.SINGLE_SUCCESS;
         }
 
+        if (!player.hasAttached(ModComponents.deathrecover)) {
+            player.setAttached(ModComponents.deathrecover, 3);
+        }
+
         if (player.getAttached(ModComponents.deathrecover) == 0){
             context.getSource().sendSuccess( () -> Component.literal("You have no recover left"), false);
             return Command.SINGLE_SUCCESS;
@@ -74,8 +78,8 @@ public class DeathrecoveryCommands {
                 playerdeathLocation.getY(),
                 playerdeathLocation.getZ(),
                 Set.of(),
-                player.getXRot(),
                 player.getYRot(),
+                player.getXRot(),
                 false
         );
         return Command.SINGLE_SUCCESS;
